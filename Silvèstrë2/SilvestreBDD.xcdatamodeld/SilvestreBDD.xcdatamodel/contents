@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Xcode 4.1" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Configuracio" representedClassName="Configuracio" syncable="YES">
+        <attribute name="contrassenya" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nomUsuari" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="avatar" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Imatges" inverseName="avatarUsuari" inverseEntity="Imatges" syncable="YES"/>
+        <relationship name="llocPerDefecte" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Llocs" inverseName="llocUsuari" inverseEntity="Llocs" syncable="YES"/>
+    </entity>
+    <entity name="Imatges" representedClassName="Imatges" syncable="YES">
+        <attribute name="imatge" optional="YES" attributeType="Transformable" valueTransformerName="ImageToDataTransformer" storedInTruthFile="YES" syncable="YES"/>
+        <attribute name="orientacio" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="avatarLloc" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Llocs" inverseName="avatar" inverseEntity="Llocs" syncable="YES"/>
+        <relationship name="avatarUsuari" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Configuracio" inverseName="avatar" inverseEntity="Configuracio" syncable="YES"/>
+        <relationship name="miniaturaRessenya" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Ressenyes" inverseName="miniatura" inverseEntity="Ressenyes" syncable="YES"/>
+        <relationship name="ressenya" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Ressenyes" inverseName="imatge" inverseEntity="Ressenyes" syncable="YES"/>
+        <relationship name="thumbnailRessenya" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Ressenyes" inverseName="thumbnail" inverseEntity="Ressenyes" syncable="YES"/>
+    </entity>
+    <entity name="Llocs" representedClassName="Llocs" syncable="YES">
+        <attribute name="adreca" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coord" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nom" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="avatar" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Imatges" inverseName="avatarLloc" inverseEntity="Imatges" syncable="YES"/>
+        <relationship name="llocUsuari" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Configuracio" inverseName="llocPerDefecte" inverseEntity="Configuracio" syncable="YES"/>
+        <relationship name="ressenyes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Ressenyes" inverseName="lloc" inverseEntity="Ressenyes" syncable="YES"/>
+    </entity>
+    <entity name="Ressenyes" representedClassName="Ressenyes" syncable="YES" dataClassName="CoreDataTableViewContoller">
+        <attribute name="autor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="data" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="dificultat" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="encadenada" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="esTemporal" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="estil" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="idRessenyaWEB" optional="YES" attributeType="Decimal" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="projecte" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="pujada" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="ressenyada" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="imatge" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Imatges" inverseName="ressenya" inverseEntity="Imatges" syncable="YES"/>
+        <relationship name="lloc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Llocs" inverseName="ressenyes" inverseEntity="Llocs" syncable="YES"/>
+        <relationship name="miniatura" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Imatges" inverseName="miniaturaRessenya" inverseEntity="Imatges" syncable="YES"/>
+        <relationship name="thumbnail" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Imatges" inverseName="thumbnailRessenya" inverseEntity="Imatges" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Configuracio" positionX="1197" positionY="315" width="128" height="105"/>
+        <element name="Imatges" positionX="700" positionY="315" width="128" height="150"/>
+        <element name="Llocs" positionX="936" positionY="45" width="128" height="120"/>
+        <element name="Ressenyes" positionX="495" positionY="45" width="128" height="255"/>
+    </elements>
+</model>
